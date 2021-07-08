@@ -1,4 +1,11 @@
 #!/bin/bash
+
+if [ $EUID != 0 ]
+then
+    echo "You must run this as root"
+    exit
+fi
+
 rm -rf /boot/grub/themes/ptilopsis
 cp -r ./ptilopsis /boot/grub/themes
 echo "Installed grub theme"
@@ -16,4 +23,3 @@ cp ./grub.d/30_uefi-firmware /etc/grub.d/30_uefi-firmware
 echo "Installed grub.d files"
 
 grub-mkconfig -o /boot/grub/grub.cfg
-echo "Made grub.cfg"
