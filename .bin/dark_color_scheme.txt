@@ -1,0 +1,31 @@
+Black
+#0F141A Dark gunmetal
+#161F27 Gunmetal
+
+Red
+#FF3333 Tart orange
+#FF5C5C Orange red
+
+Green
+#38E564 Malachite
+#4EF979 Spring green
+
+Yellow
+#E9F750 Laser lemon
+#F1FA89 Key lime
+
+Purple
+#9968DE Medium purple
+#B98BF8 Lavender floral
+
+Pink
+#FF47AF Wild strawberry
+#FF70C1 Hot pink
+
+Blue
+#6CD0EF Sky blue
+#85E8FE Light sky blue
+
+White
+#C4CCD4 Silver sand
+#E8EDED Platinum

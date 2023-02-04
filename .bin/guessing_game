@@ -1,0 +1,14 @@
+#!/bin/bash
+
+num=$(($RANDOM % 10 + 1))
+
+read -p 'Guess the number between 1-10: '
+
+if [ $REPLY -eq $num ]
+then
+	echo 'You won'
+else
+	echo 'You lost'
+fi
+
+echo 'Number was: '$num

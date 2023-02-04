@@ -6,14 +6,13 @@ then
     exit
 fi
 
-cd grub
+cd $HOME/grub
 ./install.sh
-cd
+cd $HOME/.bin
 
 read -p "Would you like to run pacman commands? (y/n): "
 if [ $REPLY == 'y' ]
 then
     echo "running pacman"
-    pacman -Syy
-    pacman -S kitty
+    ./pacman_commands
 fi
