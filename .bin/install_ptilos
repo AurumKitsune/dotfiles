@@ -6,13 +6,19 @@ then
     exit
 fi
 
+echo "Running grub config"
 cd $HOME/grub
 ./install.sh
 cd $HOME/.bin
 
-read -p "Would you like to run pacman commands? (y/n): "
-if [ $REPLY == 'y' ]
-then
-    echo "running pacman"
-    ./pacman_commands
+install_essentials
+
+read -p "Would you like to install gaming apps? (Y/n): "
+if [[ !($REPLY == 'n' ||  $REPLY == 'N') ]]; then
+    install_gaming_apps
+fi
+
+read -p "Would you like to install emulators? (Y/n): "
+if [[ !($REPLY == 'n' ||  $REPLY == 'N') ]]; then
+    install_emulators
 fi
