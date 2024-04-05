@@ -1,0 +1,88 @@
+* { 
+    all: unset;
+    font-size: 13px;
+    color: #f2f2f2;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(48, 48, 56, 0.75);
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+.modules-right {
+    margin: 4px 0;
+}
+
+tooltip {
+  background: rgba(43, 48, 59, 0.5);
+  border: 1px solid rgba(100, 114, 125, 0.5);
+}
+
+tooltip label {
+  color: @theme_text_color;
+}
+
+#workspaces button {
+    padding: 2px 0.5em 0 0.5em;
+    box-shadow: 0 3px transparent inset;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 3px #ffffff;
+}
+
+#workspaces button.active {
+    background-color: rgb(96, 96, 112);
+    box-shadow: inset 0 3px #bd93f9;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#workspaces > button:not(:last-child) {
+    border-right: 1px solid #f2f2f2;
+}
+
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#battery,
+#clock {
+   margin: 0 8px
+}
+
+.modules-right > widget:not(:last-child) {
+    border-right: 1px solid #f2f2f2;
+}
+
+#battery.charging, #battery.plugged {
+    color: #99ff99;
+}
+
+#battery.critical:not(.charging) {
+    color: #ff9999;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#network.disconnected {
+    color: #ff5C5C;
+}
+
+#pulseaudio.muted {
+    color: #cccccc;
+}
+
+#temperature.critical {
+    color: #ff9999;
+}

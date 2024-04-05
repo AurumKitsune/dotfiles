@@ -13,7 +13,10 @@ fi
 DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 alias ls='ls --color=auto'
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias vim='nvim'
+
+export EDITOR=nvim
 
 PS1='[\u@\h \W]\$ '
 
