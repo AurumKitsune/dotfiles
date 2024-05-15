@@ -1,0 +1,11 @@
+#!/bin/sh
+
+pacman -Syy
+pacman -S sddm wofi waybar otf-font-awesome brightnessctl mako thunar
+
+
+# Neovim stuff
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+pacman -S npm
