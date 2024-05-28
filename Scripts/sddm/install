@@ -1,6 +1,11 @@
 #!/bin/sh
 
-pacman -S qt5‑graphicaleffects qt5‑quickcontrols2 qt5‑svg
+if [ $EUID != 0 ]
+then
+    echo "This script requires root, please run as root"
+fi
 
-cp $HOME/Scripts/sddm/themes/sugar-candy /usr/share/sddm/themes/sugar-candy
-cp $HOME/Scripts/sddm/sddm.conf /etc/sddm.conf
+pacman -S qt5-graphicaleffects qt5-quickcontrols2 qt5-svg
+
+cp -r ./themes/sugar-candy /usr/share/sddm/themes/sugar-candy
+cp ./sddm.conf /etc/sddm.conf
