@@ -57,4 +57,3 @@ GRUB_DISABLE_OS_PROBER=false
 
 # Uncomment one of them for the gfx desired, a image background or a gfxtheme
 #GRUB_BACKGROUND="/path/to/wallpaper"
-GRUB_THEME="/boot/grub/themes/Sparkle/theme.txt"

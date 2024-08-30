@@ -1,0 +1,63 @@
+#general settings
+title-text: ""
+#desktop-color: "#333"
+desktop-image: "background.jpg"
+
+terminal-font: "Dejavu Sans Mono 12"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-border: "0"
+
+#boot menu
++ boot_menu {
+	left = 38%
+	top = 40%
+	width = 34%
+	height = 30%
+	item_font = "DejaVu Sans Bold 14"
+	item_color = "#999"
+	selected_item_font = "DejaVu Sans Bold 14"
+	selected_item_color= "#71c7f2"
+
+	menu_pad_top = 20
+	menu_pad_bottom = 20
+
+	item_height = 21
+	item_padding = 5
+	item_icon_space = 10
+	item_spacing = 1
+	scrollbar = false
+}
+
+#countdown
++ label {
+	left = 57%
+	top = 38%
+
+	id = "__timeout__"
+    font = "DejaVu Sans Bold 14"
+    color = "#999"
+}
+
+#help bar at the bottom
++ label {
+	left = 42%
+	top = 51%
+
+    text = "Hit enter to boot"
+    font = "DejaVu Sans Bold 14"
+    color = "#999"
+}
+
++ label {
+	left = 42%
+	top = 53%
+
+    text = "e: options, c: cmd-line"
+    font = "DejaVu Sans Bold 14"
+    color = "#999"
+}
+
+
