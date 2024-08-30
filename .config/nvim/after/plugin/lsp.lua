@@ -25,10 +25,10 @@ lsp.set_preferences({
     }
 })
 
-lsp.on_attach(function(_, bufnr)
-    local opts = {buffer = bufnr, remap = false}
-    attach(opts)
-end)
+-- lsp.on_attach(function(_, bufnr)
+--    local opts = {buffer = bufnr, remap = false}
+--    attach(opts)
+-- end)
 
 lsp.preset("recommended")
 
@@ -109,10 +109,10 @@ lsp.set_preferences({
     }
 })
 
-lsp.on_attach(function(client, bufnr)
-    local opts = {buffer = bufnr, remap = false}
-    attach(opts)
-end)
+-- lsp.on_attach(function(client, bufnr)
+--    local opts = {buffer = bufnr, remap = false}
+--    attach(opts)
+-- end)
 
 lsp.setup()
 

@@ -15,9 +15,12 @@ return require('packer').startup(function(use)
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('nvim-treesitter/playground')
-  use { "catppuccin/nvim", as = "catppuccin" }
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
+
+  use {
+      "catppuccin/nvim", as = "catppuccin"
+  }
 
   use {
       "VonHeikemen/lsp-zero.nvim",
