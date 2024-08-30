@@ -1,12 +1,40 @@
 #!/bin/sh
 
-pacman -Syy
-pacman -S git base-devel
-pacman -S sddm hyprpaper waybar otf-font-awesome brightnessctl mako wofi thunar
+if [ $EUID != 0 ]
+then
+    echo "You must run this as root"
+    exit
+fi
 
+pacman -Syy
+
+# Fonts
+pacman -S noto-fonts noto-fonts-emoji noto-fonts-cjk otf-font-awesome 
+
+# Essential tools
+pacman -S git base-devel bc unzip
+
+# Environment
+pacman -S sddm hyprpaper waybar brightnessctl mako wofi thunar grim slurp
 
 # Neovim stuff
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+read -p "Install packer.nvim? (y/N): "
+if [[ $REPLY == 'y' || $REPLY == 'Y' ]]; then
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+        /home/$SUDO_USER/.local/share/nvim/site/pack/packer/start/packer.nvim
+fi
 
-pacman -S npm
+# Programming Stuff
+pacman -S npm dotnet-runtime dotnet-sdk
+
+# Install yay
+read -p "Install yay? (y/N): "
+if [[ $REPLY == 'y' || $REPLY == 'Y' ]]; then
+    cd /home/$SUDO_USER
+    sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay.git
+    cd /home/$SUDO_USER/yay
+    sudo -u $SUDO_USER makepkg -si
+    cd ..
+    rm -rf /home/$SUDO_USER/yay
+fi
+
