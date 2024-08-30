@@ -11,18 +11,11 @@ pacman -Syy
 # Fonts
 pacman -S noto-fonts noto-fonts-emoji noto-fonts-cjk otf-font-awesome 
 
-# Essential tools
-pacman -S git base-devel bc unzip
+# Essentials
+pacman -S git base-devel bc unzip zsh
 
 # Environment
 pacman -S sddm hyprpaper waybar brightnessctl mako wofi thunar grim slurp
-
-# Neovim stuff
-read -p "Install packer.nvim? (y/N): "
-if [[ $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-        /home/$SUDO_USER/.local/share/nvim/site/pack/packer/start/packer.nvim
-fi
 
 # Programming Stuff
 pacman -S npm dotnet-runtime dotnet-sdk
@@ -30,11 +23,32 @@ pacman -S npm dotnet-runtime dotnet-sdk
 # Install yay
 read -p "Install yay? (y/N): "
 if [[ $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    cd /home/$SUDO_USER
-    sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay.git
-    cd /home/$SUDO_USER/yay
-    sudo -u $SUDO_USER makepkg -si
-    cd ..
+    sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay.git /home/$SUDO_USER/yay
+    (cd /home/$SUDO_USER/yay && sudo -u $SUDO_USER makepkg -si)
     rm -rf /home/$SUDO_USER/yay
+fi
+
+# Install zsh
+read -p "Install zsh add-ons? (y/N): "
+if [[ $REPLY == 'y' || $REPLY == 'Y' ]]; then
+    sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-autosuggestions /home/$SUDO_USER/.zsh/zsh-autosuggestions
+    sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$SUDO_USER/.zsh/zsh-syntax-highlighting
+    
+    exists=$(cat /home/$SUDO_USER/.zshrc | grep -c "zsh-autosuggestions")
+    if [[ $exists == 0 ]]; then
+        echo "source /home/${SUDO_USER}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> /home/$SUDO_USER/.zshrc
+    fi
+    
+    exists=$(cat /home/$SUDO_USER/.zshrc | grep -c "zsh-syntax-highlighting")
+    if [[ $exists == 0 ]]; then
+        echo "source /home/${SUDO_USER}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> /home/$SUDO_USER/.zshrc
+    fi
+fi
+
+# Neovim stuff
+read -p "Install packer.nvim? (y/N): "
+if [[ $REPLY == 'y' || $REPLY == 'Y' ]]; then
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+        /home/$SUDO_USER/.local/share/nvim/site/pack/packer/start/packer.nvim
 fi
 
