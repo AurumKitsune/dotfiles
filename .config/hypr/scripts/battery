@@ -1,0 +1,18 @@
+#!/usr/bin/sh
+
+bat_dir=""
+if [[ -d "/sys/class/power_supply/BAT0/" ]]; then
+    bat_dir="/sys/class/power_supply/BAT0/capacity"
+fi
+
+while true; do
+    bat_lvl=$(cat $bat_dir)
+
+	if [[ bat_lvl -ge 0 && bat_lvl -le 15 ]]; then
+        notify-send -h string:x-canonical-private-synchronous:sys-notify -u critical "Low Battery" "Level: ${bat_lvl}%"
+        sleep 1200
+    else
+        sleep 120
+    fi
+done
+
