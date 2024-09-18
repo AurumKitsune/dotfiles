@@ -2,7 +2,8 @@
 
 if [ $EUID != 0 ]
 then
-    echo "You must run this as root"
+    source $HOME/Scripts/formatting_vars
+    echo -e "${ESC_CHAR}${BOLD}$(($RED))${END}You must run this as root"
     exit
 fi
 
@@ -12,25 +13,25 @@ pacman -Syy
 pacman -S noto-fonts noto-fonts-emoji noto-fonts-cjk otf-font-awesome 
 
 # Essentials
-pacman -S git base-devel bc unzip zsh
+pacman -S git base-devel bc unzip cmake npm
 
 # Environment
-pacman -S sddm hyprpaper waybar brightnessctl mako wofi thunar grim slurp
+pacman -S zsh sddm hyprpaper waybar brightnessctl mako wofi thunar grim slurp
 
-# Programming Stuff
-pacman -S npm dotnet-runtime dotnet-sdk
+# Extra Programming Stuff
+pacman -S dotnet-runtime dotnet-sdk
 
 # Install yay
-read -p "Install yay? (y/N): "
-if [[ $REPLY == 'y' || $REPLY == 'Y' ]]; then
+read -p "Install yay? [Y/n] "
+if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay.git /home/$SUDO_USER/yay
     (cd /home/$SUDO_USER/yay && sudo -u $SUDO_USER makepkg -si)
     rm -rf /home/$SUDO_USER/yay
 fi
 
 # Install zsh
-read -p "Install zsh add-ons? (y/N): "
-if [[ $REPLY == 'y' || $REPLY == 'Y' ]]; then
+read -p "Install zsh add-ons? [Y/n] "
+if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-autosuggestions /home/$SUDO_USER/.zsh/zsh-autosuggestions
     sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$SUDO_USER/.zsh/zsh-syntax-highlighting
     
@@ -46,8 +47,8 @@ if [[ $REPLY == 'y' || $REPLY == 'Y' ]]; then
 fi
 
 # Neovim stuff
-read -p "Install packer.nvim? (y/N): "
-if [[ $REPLY == 'y' || $REPLY == 'Y' ]]; then
+read -p "Install packer.nvim? [Y/n] "
+if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
         /home/$SUDO_USER/.local/share/nvim/site/pack/packer/start/packer.nvim
 fi
