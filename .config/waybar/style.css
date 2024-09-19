@@ -24,8 +24,8 @@ tooltip {
 }
 
 #workspaces {
-    margin: 2px 4px 0px 4px;
-    border-radius: 15px;
+    margin: 2px 4px 0px;
+    border-radius: 1rem;
     background: @darkgrey;
 }
 
@@ -52,10 +52,14 @@ tooltip {
 #temperature,
 #pulseaudio,
 #battery {
-	border-radius: 16px;
-    margin: 2px 4px 0px 4px;
-	padding: 2px 8px;
+    margin: 2px 0px 0px;
+	padding: 0px 6px;
 	background: @darkgrey;
+}
+
+#network {
+    padding: 0 5px 0 8px;
+    border-radius: 1rem 0 0 1rem;
 }
 
 #network.wifi {
@@ -67,15 +71,20 @@ tooltip {
 }
 
 #clock {
+    padding: 0 8px 0 5px;
+    border-radius: 0 1rem 1rem 0;
     color: @white;
 }
 
 #window {
-    padding: 2px 10px 0px 10px;
+    padding: 0 10px;
+    border-radius: 1rem;
     color: @white;
 }
 
 #cpu {
+    padding: 0 5px 0 8px;
+    border-radius: 1rem 0 0 1rem;
     color: @lavender;
 }
 
@@ -96,6 +105,8 @@ tooltip {
 }
 
 #battery {
+    padding: 0 8px 0 5px;
+    border-radius: 0 1rem 1rem 0;
     color: @skyblue;
 }
 

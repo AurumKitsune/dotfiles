@@ -28,8 +28,12 @@
         "format-alt": "{:L%a, %d. %b  %H:%M}"
     },
     "hyprland/window": {
-    	"max-length": 200,
-    	"separate-outputs": true
+        "format": "{title}",
+    "rewrite": {
+        "(.*) — Mozilla Firefox": "  $1",
+        "• Discord \\| (.*)": "  $1"
+    },
+    "separate-outputs": true
     },
     "cpu": {
         "format": " {usage}%",
@@ -53,7 +57,7 @@
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": "  {format_source}",
         "format-source": "",
-        "format-source-muted": " ",
+        "format-source-muted": "",
         "format-icons": {
             "headphone": " ",
             "hands-free": " ",
