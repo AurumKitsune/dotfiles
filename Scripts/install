@@ -1,5 +1,7 @@
 #!/bin/sh
 
+clear
+
 if [ $EUID != 0 ]
 then
     source $HOME/Scripts/formatting_vars
@@ -7,21 +9,52 @@ then
     exit
 fi
 
-pacman -Syy
+echo "Here are the supported environments:"
+echo "  1. Hyprland"
+echo "  2. KDE Plasma"
+read -p "Select which you are using: " environment
+if [[ $environment == '1' ]]; then
+    echo "Hyprland"
+elif [[ $environment == '2' ]]; then
+    echo "KDE Plasma"
+fi
 
-# Fonts
-pacman -S noto-fonts noto-fonts-emoji noto-fonts-cjk otf-font-awesome 
+echo "Installing config files..."
+cp -rf /home/$SUDO_USER/Scripts/grub/themes /boot/grub
+if [[ $environment == '1' ]]; then
+    
+elif [[ $environment == '2' ]]; then
+    echo "KDE Plasma"
+fi
 
-# Essentials
-pacman -S git base-devel bc unzip cmake npm
 
-# Environment
-pacman -S zsh sddm hyprpaper waybar brightnessctl mako wofi thunar grim slurp
+read -p "Install packages? [Y/n] "
+if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
+    # Fonts
+    packages="noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-font-awesome "
+    
+    # Essentials
+    packages+="git base-devel bc unzip cmake npm zsh sddm firefox kitty "
 
-# Extra Programming Stuff
-pacman -S dotnet-runtime dotnet-sdk
+    # Get packages for environment
+    if [[ $environment == '1' ]]; then
+        echo "Hyprland"
+        packages+="hyprpaper waybar brightnessctl mako wofi thunar grim slurp "
+    elif [[ $environment == '2' ]]; then
+        echo "KDE Plasma"
+        packages+="dolphin partitionmanager "
+    fi
+
+    # Extra Programming Stuff
+    packages+="dotnet-runtime dotnet-sdk "
+
+    pacman -Syy
+    clear
+    pacman -Sq --needed $packages
+fi
 
 # Install yay
+clear
 read -p "Install yay? [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay.git /home/$SUDO_USER/yay
@@ -52,4 +85,6 @@ if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
         /home/$SUDO_USER/.local/share/nvim/site/pack/packer/start/packer.nvim
 fi
+
+clear
 

@@ -5,8 +5,7 @@ if [[ $EUID != 0 ]]; then
     exit
 fi
 
-rm -rf /boot/grub/themes/
-cp -r /home/$SUDO_USER/Scripts/grub/themes /boot/grub
+cp -rf /home/$SUDO_USER/Scripts/grub/themes /boot/grub
 echo "Installed grub themes"
 
 cat /home/$SUDO_USER/Scripts/grub/grub-config > /home/$SUDO_USER/Scripts/grub/grub
