@@ -4,7 +4,7 @@ clear
 
 if [ $EUID != 0 ]
 then
-    source $HOME/Scripts/formatting_vars
+    source $HOME/.dotfiles/formatting_vars
     echo -e "${ESC_CHAR}${BOLD}$(($RED))${END}You must run this as root"
     exit
 fi
@@ -13,28 +13,41 @@ echo "Here are the supported environments:"
 echo "  1. Hyprland"
 echo "  2. KDE Plasma"
 read -p "Select which you are using: " environment
-if [[ $environment == '1' ]]; then
-    echo "Hyprland"
-elif [[ $environment == '2' ]]; then
-    echo "KDE Plasma"
+if [[ $environment != '1' && $environment != '2' ]]; then
+    echo "Invalid input: exiting..."
+    exit
 fi
 
 echo "Installing config files..."
-cp -rf /home/$SUDO_USER/Scripts/grub/themes /boot/grub
+mkdir .config
+cp -rf /home/$SUDO_USER/.dotfiles/configs/general/* /home/$SUDO_USER/.config
+cp -rf /home/$SUDO_USER/.dotfiles/Pictures/* /home/$SUDO_USER/Pictures
 if [[ $environment == '1' ]]; then
-    
+    cp -rf /home/$SUDO_USER/.dotfiles/configs/hyprland/* /home/$SUDO_USER/.config
 elif [[ $environment == '2' ]]; then
-    echo "KDE Plasma"
+    cp -rf /home/$SUDO_USER/.dotfiles/configs/kde/* /home/$SUDO_USER/.config
 fi
 
+clear
+read -p "Install grub theme [Y/n] "
+if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
+    /home/$SUDO_USER/.dotfiles/configs/grub/install
+fi
 
+clear
+read -p "Install sddm theme [Y/n] "
+if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
+    /home/$SUDO_USER/.dotfiles/configs/sddm/install
+fi
+
+clear
 read -p "Install packages? [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     # Fonts
     packages="noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-font-awesome "
     
     # Essentials
-    packages+="git base-devel bc unzip cmake npm zsh sddm firefox kitty "
+    packages+="git base-devel bc unzip cmake npm sddm firefox kitty "
 
     # Get packages for environment
     if [[ $environment == '1' ]]; then
@@ -53,7 +66,6 @@ if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     pacman -Sq --needed $packages
 fi
 
-# Install yay
 clear
 read -p "Install yay? [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
@@ -62,9 +74,16 @@ if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     rm -rf /home/$SUDO_USER/yay
 fi
 
-# Install zsh
-read -p "Install zsh add-ons? [Y/n] "
+clear
+read -p "Install zsh? [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
+    pacman -Sq --needed zsh
+    
+    chsh -s /bin/zsh
+
+    cp -f /home/$SUDO_USER/.dotfiles/configs/.zshrc /home/$SUDO_USER/.zshrc
+    cp -f /home/$SUDO_USER/.dotfiles/configs/.zshenv /home/$SUDO_USER/.zshenv
+
     sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-autosuggestions /home/$SUDO_USER/.zsh/zsh-autosuggestions
     sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$SUDO_USER/.zsh/zsh-syntax-highlighting
     
@@ -79,10 +98,10 @@ if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     fi
 fi
 
-# Neovim stuff
+clear
 read -p "Install packer.nvim? [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+    sudo -u $SUDO_USER git clone --depth 1 https://github.com/wbthomason/packer.nvim\
         /home/$SUDO_USER/.local/share/nvim/site/pack/packer/start/packer.nvim
 fi
 

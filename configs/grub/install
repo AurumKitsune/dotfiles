@@ -5,26 +5,27 @@ if [[ $EUID != 0 ]]; then
     exit
 fi
 
-cp -rf /home/$SUDO_USER/Scripts/grub/themes /boot/grub
+script_dir="/home/$SUDO_USER/.dotfiles/configs/grub"
+
+cp -rf $script_dir/themes /boot/grub
 echo "Installed grub themes"
 
-cat /home/$SUDO_USER/Scripts/grub/grub-config > /home/$SUDO_USER/Scripts/grub/grub
+cat $script_dir/grub-config > $script_dir/grub
 
 echo "There are the following themes:"
 echo "  1. Sparkle"
 echo "  2. Ptilopsis"
 read -p "Select theme to use: "
 if [[ $REPLY == '1' ]]; then
-    echo 'GRUB_THEME="/boot/grub/themes/Sparkle/theme.txt"' >> /home/$SUDO_USER/Scripts/grub/grub
+    echo 'GRUB_THEME="/boot/grub/themes/Sparkle/theme.txt"' >> $script_dir/grub
     #echo 'GRUB_FONT="/usr/share/grub/unicode.pf2"' >> /home/$SUDO_USER/Scripts/grub/grub
 elif [[ $REPLY == '2' ]]; then
-    echo 'GRUB_THEME="/boot/grub/themes/Ptilopsis/theme.txt"' >> /home/$SUDO_USER/Scripts/grub/grub
+    echo 'GRUB_THEME="/boot/grub/themes/Ptilopsis/theme.txt"' >> $script_dir/grub
 else
     echo ""
 fi
 
-rm /etc/default/grub
-cp /home/$SUDO_USER/Scripts/grub/grub /etc/default/grub
+cp -f $script_dir/grub /etc/default/grub
 echo "Installed grub config"
 
 grub-mkconfig -o /boot/grub/grub.cfg

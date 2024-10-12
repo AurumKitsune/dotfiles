@@ -7,14 +7,12 @@ I created a script to easily install everything you need
 
 Clone repo:
 ```shell
-git clone --bare https://github.com/AurumKitsune/dotfiles.git $HOME/.dotfiles
-
-/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" checkout
+git clone https://github.com/AurumKitsune/dotfiles.git $HOME/.dotfiles
 ```
 
 To run the script:
 ```shell
-chmod +x ~/Scripts/install
+chmod +x ~/.dotfiles/install
 
-sudo ~/Scripts/install
+sudo ~/.dotfiles/install
 ```
