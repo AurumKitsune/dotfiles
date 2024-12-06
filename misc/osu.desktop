@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Osu!
+Comment=Osu!
+Icon=/home/aurum/Applications/osu
+Exec=/home/aurum/Applications/osu.AppImage
+Terminal=false
+Categories=Application;Game

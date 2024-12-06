@@ -47,7 +47,7 @@ if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     packages="noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-font-awesome "
     
     # Essentials
-    packages+="git base-devel bc unzip cmake npm sddm firefox kitty "
+    packages+="git base-devel bc unzip cmake npm sddm firefox kitty pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber "
 
     # Get packages for environment
     if [[ $environment == '1' ]]; then
@@ -55,7 +55,7 @@ if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
         packages+="hyprpaper waybar brightnessctl mako wofi thunar grim slurp "
     elif [[ $environment == '2' ]]; then
         echo "KDE Plasma"
-        packages+="dolphin partitionmanager "
+        packages+="dolphin partitionmanager kscreen plasma-pa "
     fi
 
     # Extra Programming Stuff
@@ -103,6 +103,13 @@ read -p "Install packer.nvim? [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     sudo -u $SUDO_USER git clone --depth 1 https://github.com/wbthomason/packer.nvim\
         /home/$SUDO_USER/.local/share/nvim/site/pack/packer/start/packer.nvim
+fi
+
+clear
+read -p "Install gaming applications [Y/n] "
+if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
+    sudo -u $SUDO_USER curl -L -o /home/$SUDO_USER/Applications/osu.AppImage https://github.com/ppy/osu/releases/latest/download/osu.AppImage
+    cp -f /home/$SUDO_USER/.dotfiles/misc/osu.desktop /home/$SUDO_USER/.local/share/applications
 fi
 
 clear
