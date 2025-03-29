@@ -4,7 +4,7 @@ clear
 
 if [ $EUID != 0 ]
 then
-    source $HOME/.dotfiles/formatting_vars
+    source $HOME/dotfiles/formatting_vars
     echo -e "${ESC_CHAR}${BOLD}$(($RED))${END}You must run this as root"
     exit
 fi
@@ -20,24 +20,24 @@ fi
 
 echo "Installing config files..."
 mkdir .config
-cp -rf /home/$SUDO_USER/.dotfiles/configs/general/* /home/$SUDO_USER/.config
-cp -rf /home/$SUDO_USER/.dotfiles/Pictures/* /home/$SUDO_USER/Pictures
+cp -rf /home/$SUDO_USER/dotfiles/configs/general/* /home/$SUDO_USER/.config
+cp -rf /home/$SUDO_USER/dotfiles/Pictures/* /home/$SUDO_USER/Pictures
 if [[ $environment == '1' ]]; then
-    cp -rf /home/$SUDO_USER/.dotfiles/configs/hyprland/* /home/$SUDO_USER/.config
+    cp -rf /home/$SUDO_USER/dotfiles/configs/hyprland/* /home/$SUDO_USER/.config
 elif [[ $environment == '2' ]]; then
-    cp -rf /home/$SUDO_USER/.dotfiles/configs/kde/* /home/$SUDO_USER/.config
+    cp -rf /home/$SUDO_USER/dotfiles/configs/kde/* /home/$SUDO_USER/.config
 fi
 
 clear
 read -p "Install grub theme [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    /home/$SUDO_USER/.dotfiles/configs/grub/install
+    /home/$SUDO_USER/dotfiles/configs/grub/install
 fi
 
 clear
 read -p "Install sddm theme [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    /home/$SUDO_USER/.dotfiles/configs/sddm/install
+    /home/$SUDO_USER/dotfiles/configs/sddm/install
 fi
 
 clear
@@ -81,8 +81,8 @@ if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     
     chsh -s /bin/zsh
 
-    cp -f /home/$SUDO_USER/.dotfiles/configs/.zshrc /home/$SUDO_USER/.zshrc
-    cp -f /home/$SUDO_USER/.dotfiles/configs/.zshenv /home/$SUDO_USER/.zshenv
+    cp -f /home/$SUDO_USER/dotfiles/configs/.zshrc /home/$SUDO_USER/.zshrc
+    cp -f /home/$SUDO_USER/dotfiles/configs/.zshenv /home/$SUDO_USER/.zshenv
 
     sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-autosuggestions /home/$SUDO_USER/.zsh/zsh-autosuggestions
     sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$SUDO_USER/.zsh/zsh-syntax-highlighting
