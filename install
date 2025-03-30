@@ -4,7 +4,7 @@ clear
 
 if [ $EUID != 0 ]
 then
-    source $HOME/dotfiles/formatting_vars
+    source $HOME/.dotfiles/formatting_vars
     echo -e "${ESC_CHAR}${BOLD}$(($RED))${END}You must run this as root"
     exit
 fi
@@ -19,7 +19,7 @@ if [[ $environment != '1' && $environment != '2' ]]; then
 fi
 
 echo "Installing config files..."
-mkdir .config
+sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.config
 cp -rf /home/$SUDO_USER/.dotfiles/configs/general/* /home/$SUDO_USER/.config
 cp -rf /home/$SUDO_USER/.dotfiles/Pictures/* /home/$SUDO_USER/Pictures
 if [[ $environment == '1' ]]; then
