@@ -1,5 +1,5 @@
 # Dotfiles
-My Arch Linux Hyprland configuration files 
+My config files for Hyprland and KDE 
 
 
 # Installation Instructions
