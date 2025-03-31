@@ -99,13 +99,6 @@ if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
 fi
 
 clear
-read -p "Install packer.nvim? [Y/n] "
-if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    sudo -u $SUDO_USER git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-        /home/$SUDO_USER/.local/share/nvim/site/pack/packer/start/packer.nvim
-fi
-
-clear
 read -p "Install gaming applications [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     sudo -u $SUDO_USER curl -L -o /home/$SUDO_USER/Applications/osu.AppImage https://github.com/ppy/osu/releases/latest/download/osu.AppImage
