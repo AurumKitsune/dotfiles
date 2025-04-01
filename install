@@ -9,6 +9,21 @@ then
     exit
 fi
 
+echo "Here are the supported distros:"
+echo "  1. Arch-based"
+echo "  2. Fedora"
+read -p "Select which you are using: " environment
+if [[ $environment != '1' && $environment != '2' ]]; then
+    echo "Invalid input: exiting..."
+    exit
+fi
+if [[ $environment == '1' ]]; then
+    echo "arch"
+    source /home/$SUDO_USER/.dotfiles/install_packages_arch
+elif [[ $environment == '2' ]]; then
+    source /home/$SUDO_USER/.dotfiles/install_packages_fedora
+fi
+
 echo "Here are the supported environments:"
 echo "  1. Hyprland"
 echo "  2. KDE Plasma"
@@ -18,14 +33,24 @@ if [[ $environment != '1' && $environment != '2' ]]; then
     exit
 fi
 
-echo "Installing config files..."
-sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.config
-sudo -u $SUDO_USER cp -rf /home/$SUDO_USER/.dotfiles/configs/general/* /home/$SUDO_USER/.config
-sudo -u $SUDO_USER cp -rf /home/$SUDO_USER/.dotfiles/Pictures/* /home/$SUDO_USER/Pictures
-if [[ $environment == '1' ]]; then
-    sudo -u $SUDO_USER cp -rf /home/$SUDO_USER/.dotfiles/configs/hyprland/* /home/$SUDO_USER/.config
-elif [[ $environment == '2' ]]; then
-    sudo -u $SUDO_USER cp -rf /home/$SUDO_USER/.dotfiles/configs/kde/* /home/$SUDO_USER/.config
+clear
+read -p "Install packages? [Y/n] "
+if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
+    install_base_packages
+    install_environment_packages $environment
+fi
+
+clear
+read -p "Install config files [Y/n] "
+if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
+    sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.config
+    sudo -u $SUDO_USER cp -rf /home/$SUDO_USER/.dotfiles/configs/general/* /home/$SUDO_USER/.config
+    sudo -u $SUDO_USER cp -rf /home/$SUDO_USER/.dotfiles/Pictures/* /home/$SUDO_USER/Pictures
+    if [[ $environment == '1' ]]; then
+        sudo -u $SUDO_USER cp -rf /home/$SUDO_USER/.dotfiles/configs/hyprland/* /home/$SUDO_USER/.config
+    elif [[ $environment == '2' ]]; then
+        sudo -u $SUDO_USER cp -rf /home/$SUDO_USER/.dotfiles/configs/kde/* /home/$SUDO_USER/.config
+    fi
 fi
 
 clear
@@ -37,33 +62,8 @@ fi
 clear
 read -p "Install sddm theme [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
+    install_sddm_packages
     /home/$SUDO_USER/.dotfiles/configs/sddm/install
-fi
-
-clear
-read -p "Install packages? [Y/n] "
-if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    # Fonts
-    packages="noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-font-awesome "
-    
-    # Essentials
-    packages+="git base-devel bc unzip cmake npm sddm firefox kitty pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber "
-
-    # Get packages for environment
-    if [[ $environment == '1' ]]; then
-        echo "Hyprland"
-        packages+="hyprpaper waybar brightnessctl mako wofi thunar grim slurp "
-    elif [[ $environment == '2' ]]; then
-        echo "KDE Plasma"
-        packages+="dolphin partitionmanager kscreen plasma-pa "
-    fi
-
-    # Extra Programming Stuff
-    packages+="dotnet-runtime dotnet-sdk "
-
-    pacman -Syy
-    clear
-    pacman -Sq --needed $packages
 fi
 
 clear
@@ -77,7 +77,7 @@ fi
 clear
 read -p "Install zsh? [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    pacman -Sq --needed zsh
+    install_zsh
     
     sudo -u $SUDO_USER chsh -s /bin/zsh
 

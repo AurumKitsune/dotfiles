@@ -7,7 +7,5 @@ fi
 
 script_dir="/home/$SUDO_USER/.dotfiles/configs/sddm"
 
-pacman -S qt5-graphicaleffects qt5-quickcontrols2 qt5-svg
-
 cp -rf $script_dir/themes/sugar-candy /usr/share/sddm/themes/sugar-candy
 cp -f $script_dir/sddm.conf /etc/sddm.conf
