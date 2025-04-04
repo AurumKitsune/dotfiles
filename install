@@ -9,6 +9,8 @@ then
     exit
 fi
 
+HOME="/home/${SUDO_USER}"
+
 echo "Here are the supported distros:"
 echo "  1. Arch-based"
 echo "  2. Fedora"
@@ -19,9 +21,9 @@ if [[ $environment != '1' && $environment != '2' ]]; then
 fi
 if [[ $environment == '1' ]]; then
     echo "arch"
-    source /home/$SUDO_USER/.dotfiles/install_packages_arch
+    source $HOME/.dotfiles/install_packages_arch
 elif [[ $environment == '2' ]]; then
-    source /home/$SUDO_USER/.dotfiles/install_packages_fedora
+    source $HOME/.dotfiles/install_packages_fedora
 fi
 
 echo "Here are the supported environments:"
@@ -33,45 +35,48 @@ if [[ $environment != '1' && $environment != '2' ]]; then
     exit
 fi
 
+sudo -u $SUDO_USER touch $HOME/.dotfiles/log.txt
+log_file="${HOME}/.dotfiles/log.txt"
+
 clear
 read -p "Install packages? [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    install_base_packages
+    install_base_packages &>> log_file
     install_environment_packages $environment
 fi
 
 clear
 read -p "Install config files [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.config
-    sudo -u $SUDO_USER cp -rf /home/$SUDO_USER/.dotfiles/configs/general/* /home/$SUDO_USER/.config
-    sudo -u $SUDO_USER cp -rf /home/$SUDO_USER/.dotfiles/Pictures/* /home/$SUDO_USER/Pictures
+    sudo -u $SUDO_USER mkdir $HOME/.config
+    sudo -u $SUDO_USER cp -rf $HOME/.dotfiles/configs/general/* $HOME/.config
+    sudo -u $SUDO_USER cp -rf $HOME/.dotfiles/Pictures/* $HOME/Pictures
     if [[ $environment == '1' ]]; then
-        sudo -u $SUDO_USER cp -rf /home/$SUDO_USER/.dotfiles/configs/hyprland/* /home/$SUDO_USER/.config
+        sudo -u $SUDO_USER cp -rf $HOME/.dotfiles/configs/hyprland/* $HOME/.config
     elif [[ $environment == '2' ]]; then
-        sudo -u $SUDO_USER cp -rf /home/$SUDO_USER/.dotfiles/configs/kde/* /home/$SUDO_USER/.config
+        sudo -u $SUDO_USER cp -rf $HOME/.dotfiles/configs/kde/* $HOME/.config
     fi
 fi
 
 clear
 read -p "Install grub theme [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    /home/$SUDO_USER/.dotfiles/configs/grub/install
+    $HOME/.dotfiles/configs/grub/install
 fi
 
 clear
 read -p "Install sddm theme [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     install_sddm_packages
-    /home/$SUDO_USER/.dotfiles/configs/sddm/install
+    $HOME/.dotfiles/configs/sddm/install
 fi
 
 clear
 read -p "Install yay? [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay.git /home/$SUDO_USER/yay
-    (cd /home/$SUDO_USER/yay && sudo -u $SUDO_USER makepkg -si)
-    rm -rf /home/$SUDO_USER/yay
+    sudo -u $SUDO_USER git clone https://aur.archlinux.org/yay.git $HOME/yay
+    (cd $HOME/yay && sudo -u $SUDO_USER makepkg -si)
+    rm -rf $HOME/yay
 fi
 
 clear
@@ -81,28 +86,28 @@ if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     
     sudo -u $SUDO_USER chsh -s /bin/zsh
 
-    sudo -u $SUDO_USER cp -f /home/$SUDO_USER/.dotfiles/configs/.zshrc /home/$SUDO_USER/.zshrc
-    sudo -u $SUDO_USER cp -f /home/$SUDO_USER/.dotfiles/configs/.zshenv /home/$SUDO_USER/.zshenv
+    sudo -u $SUDO_USER cp -f $HOME/.dotfiles/configs/.zshrc $HOME/.zshrc
+    sudo -u $SUDO_USER cp -f $HOME/.dotfiles/configs/.zshenv $HOME/.zshenv
 
-    sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-autosuggestions /home/$SUDO_USER/.zsh/zsh-autosuggestions
-    sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$SUDO_USER/.zsh/zsh-syntax-highlighting
+    sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
+    sudo -u $SUDO_USER git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
     
-    exists=$(cat /home/$SUDO_USER/.zshrc | grep -c "zsh-autosuggestions")
+    exists=$(cat $HOME/.zshrc | grep -c "zsh-autosuggestions")
     if [[ $exists == 0 ]]; then
-        echo "source /home/${SUDO_USER}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> /home/$SUDO_USER/.zshrc
+        echo "source $HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> $HOME/.zshrc
     fi
     
-    exists=$(cat /home/$SUDO_USER/.zshrc | grep -c "zsh-syntax-highlighting")
+    exists=$(cat $HOME/.zshrc | grep -c "zsh-syntax-highlighting")
     if [[ $exists == 0 ]]; then
-        echo "source /home/${SUDO_USER}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> /home/$SUDO_USER/.zshrc
+        echo "source $HOME}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> $HOME/.zshrc
     fi
 fi
 
 clear
 read -p "Install gaming applications [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    sudo -u $SUDO_USER curl -L -o /home/$SUDO_USER/Applications/osu.AppImage https://github.com/ppy/osu/releases/latest/download/osu.AppImage
-    cp -f /home/$SUDO_USER/.dotfiles/misc/osu.desktop /home/$SUDO_USER/.local/share/applications
+    sudo -u $SUDO_USER curl -L -o $HOME/Applications/osu.AppImage https://github.com/ppy/osu/releases/latest/download/osu.AppImage
+    cp -f $HOME/.dotfiles/misc/osu.desktop $HOME/.local/share/applications
 fi
 
 clear

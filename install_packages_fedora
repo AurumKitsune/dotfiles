@@ -1,5 +1,4 @@
 install_base_packages() {
-    echo "in function"
     # Fonts
     #packages="fontawesome-fonts "
     

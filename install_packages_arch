@@ -11,17 +11,19 @@ install_base_packages() {
 
     pacman -Syy
     clear
-    pacman -Sq --needed $packages
+    pacman -Sq --needed $packages > /home/$SUDO_USER/.dotfiles/log.txt
 }
 
 install_environment_packages() {
     if [[ $1 == '1' ]]; then
         echo "Hyprland"
-        packages+="hyprpaper waybar brightnessctl mako wofi thunar grim slurp "
+        packages="hyprpaper waybar brightnessctl mako wofi thunar grim slurp "
     elif [[ $1 == '2' ]]; then
         echo "KDE Plasma"
-        packages+="dolphin partitionmanager kscreen plasma-pa "
+        packages="dolphin partitionmanager kscreen plasma-pa "
     fi
+
+    pacman -Sq --needed $packages
 }
 
 install_sddm_packages() {
