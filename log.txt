@@ -1,0 +1,155 @@
+in function
+:: Synchronizing package databases...
+ core downloading...
+ extra downloading...
+ multilib downloading...
+[H[2Jwarning: noto-fonts-1:2025.04.01-1 is up to date -- skipping
+warning: noto-fonts-emoji-1:2.047-1 is up to date -- skipping
+warning: noto-fonts-cjk-20240730-1 is up to date -- skipping
+warning: ttf-font-awesome-6.7.2-1 is up to date -- skipping
+warning: git-2.49.0-1 is up to date -- skipping
+warning: base-devel-1-2 is up to date -- skipping
+warning: bc-1.08.1-1 is up to date -- skipping
+warning: unzip-6.0-22 is up to date -- skipping
+warning: cmake-4.0.0-1 is up to date -- skipping
+warning: npm-11.2.0-1 is up to date -- skipping
+warning: sddm-0.21.0-6 is up to date -- skipping
+warning: firefox-137.0-1 is up to date -- skipping
+warning: pipewire-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-alsa-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-pulse-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-jack-1:1.4.1-1 is up to date -- skipping
+warning: wireplumber-0.5.8-1 is up to date -- skipping
+warning: dotnet-sdk-8.0-8.0.14.sdk114-1 is up to date -- skipping
+resolving dependencies...
+looking for conflicting packages...
+
+Packages (1) kitty-0.41.1-1
+
+Total Download Size:   13.70 MiB
+Total Installed Size:  47.57 MiB
+Net Upgrade Size:       0.02 MiB
+
+:: Proceed with installation? [Y/n] :: Retrieving packages...
+ kitty-0.41.1-1-x86_64 downloading...
+checking keyring...
+checking package integrity...
+loading package files...
+checking for file conflicts...
+checking available disk space...
+:: Processing package changes...
+upgrading kitty...
+:: Running post-transaction hooks...
+(1/3) Arming ConditionNeedsUpdate...
+(2/3) Updating icon theme caches...
+(3/3) Updating the desktop file MIME type cache...
+/home/aurum/.dotfiles/install_packages_fedora: line 11: dnf: command not found
+/home/aurum/.dotfiles/install_packages_fedora: line 11: dnf: command not found
+:: Synchronizing package databases...
+ core downloading...
+ extra downloading...
+ multilib downloading...
+[H[2Jwarning: noto-fonts-1:2025.04.01-1 is up to date -- skipping
+warning: noto-fonts-emoji-1:2.047-1 is up to date -- skipping
+warning: noto-fonts-cjk-20240730-1 is up to date -- skipping
+warning: ttf-font-awesome-6.7.2-1 is up to date -- skipping
+warning: git-2.49.0-1 is up to date -- skipping
+warning: base-devel-1-2 is up to date -- skipping
+warning: bc-1.08.1-1 is up to date -- skipping
+warning: unzip-6.0-22 is up to date -- skipping
+warning: cmake-4.0.0-1 is up to date -- skipping
+warning: npm-11.2.0-1 is up to date -- skipping
+warning: sddm-0.21.0-6 is up to date -- skipping
+warning: firefox-137.0-1 is up to date -- skipping
+warning: kitty-0.41.1-1 is up to date -- skipping
+warning: pipewire-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-alsa-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-pulse-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-jack-1:1.4.1-1 is up to date -- skipping
+warning: wireplumber-0.5.8-1 is up to date -- skipping
+warning: dotnet-sdk-8.0-8.0.14.sdk114-1 is up to date -- skipping
+ there is nothing to do
+:: Synchronizing package databases...
+ core downloading...
+ extra downloading...
+ multilib downloading...
+[H[2Jwarning: noto-fonts-1:2025.04.01-1 is up to date -- skipping
+warning: noto-fonts-emoji-1:2.047-1 is up to date -- skipping
+warning: noto-fonts-cjk-20240730-1 is up to date -- skipping
+warning: ttf-font-awesome-6.7.2-1 is up to date -- skipping
+warning: git-2.49.0-1 is up to date -- skipping
+warning: base-devel-1-2 is up to date -- skipping
+warning: bc-1.08.1-1 is up to date -- skipping
+warning: unzip-6.0-22 is up to date -- skipping
+warning: cmake-4.0.0-1 is up to date -- skipping
+warning: npm-11.2.0-1 is up to date -- skipping
+warning: sddm-0.21.0-6 is up to date -- skipping
+warning: firefox-137.0-1 is up to date -- skipping
+warning: kitty-0.41.1-1 is up to date -- skipping
+warning: pipewire-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-alsa-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-pulse-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-jack-1:1.4.1-1 is up to date -- skipping
+warning: wireplumber-0.5.8-1 is up to date -- skipping
+warning: dotnet-sdk-8.0-8.0.14.sdk114-1 is up to date -- skipping
+ there is nothing to do
+:: Synchronizing package databases...
+ core downloading...
+ extra downloading...
+ multilib downloading...
+[H[2Jwarning: noto-fonts-1:2025.04.01-1 is up to date -- skipping
+warning: noto-fonts-emoji-1:2.047-1 is up to date -- skipping
+warning: noto-fonts-cjk-20240730-1 is up to date -- skipping
+warning: ttf-font-awesome-6.7.2-1 is up to date -- skipping
+warning: git-2.49.0-1 is up to date -- skipping
+warning: base-devel-1-2 is up to date -- skipping
+warning: bc-1.08.1-1 is up to date -- skipping
+warning: unzip-6.0-22 is up to date -- skipping
+warning: cmake-4.0.0-1 is up to date -- skipping
+warning: npm-11.2.0-1 is up to date -- skipping
+warning: sddm-0.21.0-6 is up to date -- skipping
+warning: firefox-137.0-1 is up to date -- skipping
+warning: kitty-0.41.1-1 is up to date -- skipping
+warning: pipewire-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-alsa-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-pulse-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-jack-1:1.4.1-1 is up to date -- skipping
+warning: wireplumber-0.5.8-1 is up to date -- skipping
+warning: dotnet-sdk-8.0-8.0.14.sdk114-1 is up to date -- skipping
+ there is nothing to do
+KDE Plasma
+warning: dolphin-24.12.3-1 is up to date -- skipping
+warning: partitionmanager-24.12.3-1 is up to date -- skipping
+warning: kscreen-6.3.4-1 is up to date -- skipping
+warning: plasma-pa-6.3.4-1 is up to date -- skipping
+ there is nothing to do
+:: Synchronizing package databases...
+ core downloading...
+ extra downloading...
+ multilib downloading...
+[H[2Jwarning: noto-fonts-1:2025.04.01-1 is up to date -- skipping
+warning: noto-fonts-emoji-1:2.047-1 is up to date -- skipping
+warning: noto-fonts-cjk-20240730-1 is up to date -- skipping
+warning: ttf-font-awesome-6.7.2-1 is up to date -- skipping
+warning: git-2.49.0-1 is up to date -- skipping
+warning: base-devel-1-2 is up to date -- skipping
+warning: bc-1.08.1-1 is up to date -- skipping
+warning: unzip-6.0-22 is up to date -- skipping
+warning: cmake-4.0.0-1 is up to date -- skipping
+warning: npm-11.2.0-1 is up to date -- skipping
+warning: sddm-0.21.0-6 is up to date -- skipping
+warning: firefox-137.0-1 is up to date -- skipping
+warning: kitty-0.41.1-1 is up to date -- skipping
+warning: pipewire-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-alsa-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-pulse-1:1.4.1-1 is up to date -- skipping
+warning: pipewire-jack-1:1.4.1-1 is up to date -- skipping
+warning: wireplumber-0.5.8-1 is up to date -- skipping
+warning: dotnet-sdk-8.0-8.0.14.sdk114-1 is up to date -- skipping
+ there is nothing to do
+KDE Plasma
+warning: dolphin-24.12.3-1 is up to date -- skipping
+warning: partitionmanager-24.12.3-1 is up to date -- skipping
+warning: kscreen-6.3.4-1 is up to date -- skipping
+warning: plasma-pa-6.3.4-1 is up to date -- skipping
+ there is nothing to do

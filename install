@@ -41,14 +41,15 @@ log_file="${HOME}/.dotfiles/log.txt"
 clear
 read -p "Install packages? [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    install_base_packages &>> log_file
-    install_environment_packages $environment
+    echo "working..."
+    install_base_packages &>> $log_file
+    install_environment_packages $environment &>> $log_file
 fi
 
 clear
 read -p "Install config files [Y/n] "
 if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
-    sudo -u $SUDO_USER mkdir $HOME/.config
+    sudo -u $SUDO_USER mkdir -p $HOME/.config
     sudo -u $SUDO_USER cp -rf $HOME/.dotfiles/configs/general/* $HOME/.config
     sudo -u $SUDO_USER cp -rf $HOME/.dotfiles/Pictures/* $HOME/Pictures
     if [[ $environment == '1' ]]; then

@@ -1,5 +1,4 @@
 install_base_packages() {
-    echo "in function"
     # Fonts
     packages="noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-font-awesome "
     
@@ -11,7 +10,7 @@ install_base_packages() {
 
     pacman -Syy
     clear
-    pacman -Sq --needed $packages > /home/$SUDO_USER/.dotfiles/log.txt
+    pacman -S --needed $packages
 }
 
 install_environment_packages() {
@@ -23,7 +22,7 @@ install_environment_packages() {
         packages="dolphin partitionmanager kscreen plasma-pa "
     fi
 
-    pacman -Sq --needed $packages
+    pacman -S --needed $packages
 }
 
 install_sddm_packages() {
@@ -31,5 +30,5 @@ install_sddm_packages() {
 }
 
 install_zsh() {
-    pacman -Sq --needed zsh
+    pacman -S --needed zsh
 }
