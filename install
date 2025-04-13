@@ -97,12 +97,12 @@ if [[ $REPLY == '' || $REPLY == 'y' || $REPLY == 'Y' ]]; then
     
     exists=$(cat $HOME/.zshrc | grep -c "zsh-autosuggestions")
     if [[ $exists == 0 ]]; then
-        echo "source $HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> $HOME/.zshrc
+        echo "source ${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> $HOME/.zshrc
     fi
     
     exists=$(cat $HOME/.zshrc | grep -c "zsh-syntax-highlighting")
     if [[ $exists == 0 ]]; then
-        echo "source $HOME}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> $HOME/.zshrc
+        echo "source ${HOME}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> $HOME/.zshrc
     fi
 fi
 
