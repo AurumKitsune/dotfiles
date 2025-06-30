@@ -6,7 +6,7 @@ install_base_packages() {
     packages+="git base-devel bc unzip cmake npm sddm firefox kitty pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber "
 
     # Extra Programming Stuff
-    packages+="dotnet-sdk-8.0 "
+    packages+="gcc dotnet-sdk-8.0 "
 
     sudo pacman -Syy
     clear

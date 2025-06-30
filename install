@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 clear
 
@@ -17,8 +17,8 @@ log_file="${HOME}/.dotfiles/log.txt"
 source $HOME/.dotfiles/install_packages_arch
 
 echo "Here are the supported package managers:"
-echo "  1. pacman"
-echo "  2. apt"
+echo "  1. Pacman"
+echo "  2. Apt"
 read -p "Select which you are using: " environment
 if [[ $environment != '1' && $environment != '2' ]]; then
     echo "Invalid input: exiting..."
