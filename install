@@ -16,20 +16,20 @@ log_file="${HOME}/.dotfiles/log.txt"
 
 source $HOME/.dotfiles/install_packages_arch
 
-# echo "Here are the supported distros:"
-# echo "  1. Arch-based"
-# echo "  2. Fedora"
-# read -p "Select which you are using: " environment
-# if [[ $environment != '1' && $environment != '2' ]]; then
-#     echo "Invalid input: exiting..."
-#     exit
-# fi
-# if [[ $environment == '1' ]]; then
-#     echo "arch"
-#     source $HOME/.dotfiles/install_packages_arch
-# elif [[ $environment == '2' ]]; then
-#     source $HOME/.dotfiles/install_packages_fedora
-# fi
+echo "Here are the supported package managers:"
+echo "  1. pacman"
+echo "  2. apt"
+read -p "Select which you are using: " environment
+if [[ $environment != '1' && $environment != '2' ]]; then
+    echo "Invalid input: exiting..."
+    exit
+fi
+if [[ $environment == '1' ]]; then
+    echo "arch"
+    source $HOME/.dotfiles/install_packages_arch
+elif [[ $environment == '2' ]]; then
+    source $HOME/.dotfiles/install_packages_apt
+fi
 
 echo "Here are the supported environments:"
 echo "  1. Hyprland"

@@ -8,7 +8,7 @@ install_base_packages() {
     # Extra Programming Stuff
     packages+="dotnet-sdk-8.0 "
 
-    dnf install --refresh $packages
+    apt install $packages
 }
 
 install_environment_packages() {
@@ -20,13 +20,13 @@ install_environment_packages() {
         packages="dolphin partitionmanager kscreen plasma-pa "
     fi
 
-    dnf install $packages
+    apt install $packages
 }
 
 install_sddm_packages() {
-    dnf install qt5-qtgraphicaleffects qt5-qtquickcontrols2 qt5-qtsvg
+    apt install qt5-qtgraphicaleffects qt5-qtquickcontrols2 qt5-qtsvg
 }
 
 install_zsh() {
-    dnf install zsh
+    apt install zsh
 }
